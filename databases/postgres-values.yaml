@@ -1,0 +1,13 @@
+global:
+  storageClass: local-path
+
+auth:
+  existingSecret: postgres-creds
+  existingSecretKey: postgresql-password
+
+primary:
+  persistence:
+    size: 20Gi
+
+service:
+  port: 5432

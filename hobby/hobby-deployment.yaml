@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hobby
+  namespace: hobby
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hobby
+  template:
+    metadata:
+      labels:
+        app: hobby
+    spec:
+      containers:
+      - name: hobby
+        image: 10.0.0.243/hobby/hobby:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: hobby-secrets
+              key: MONGO_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: hobby-secrets
+              key: JWT_SECRET
+      imagePullSecrets:
+      - name: harbor-creds

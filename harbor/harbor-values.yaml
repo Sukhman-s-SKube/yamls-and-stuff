@@ -1,0 +1,27 @@
+expose:
+  type: loadBalancer
+  loadBalancerIP: 10.0.0.243
+
+  tls:
+    enabled: false
+
+externalURL: http://10.0.0.243
+
+harborAdminPassword: "<Insert password here>"
+
+persistence:
+  enabled: true
+  storageClass: "local-path"
+  persistentVolumeClaim:
+    registry:
+      size: 70Gi
+    chartmuseum:
+      size: 10Gi
+    jobservice:
+      size: 5Gi
+    database:
+      size: 10Gi
+    redis:
+      size: 5Gi
+
+resources: {}

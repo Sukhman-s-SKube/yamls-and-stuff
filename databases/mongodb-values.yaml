@@ -1,0 +1,20 @@
+global:
+  storageClass: local-path
+
+auth:
+  existingSecret: mongodb-creds
+  existingSecretKey: mongodb-root-password
+
+replicaSet:
+  enabled: false
+
+architecture: standalone
+
+persistence:
+  size: 20Gi
+
+service:
+  type: NodePort
+  port: 27017
+  nodePort: 30017
+  targetPort: 27017
