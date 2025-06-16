@@ -1,0 +1,25 @@
+auth:
+  existingSecret: minio-secret
+  existingSecretUserKey: root-user
+  existingSecretPasswordKey: root-password
+
+mode: standalone
+
+persistence:
+  enabled: true
+  storageClass: local-path
+  size: 100Gi
+
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+service:
+  type: LoadBalancer
+  ports:
+    api: 9000
+    console: 9001
